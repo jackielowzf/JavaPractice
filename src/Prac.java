@@ -4,7 +4,7 @@ public class Prac{
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		
-		// Asks user to input integer between 0 ~ 1000
+		// Asks user to input intxveger between 0 ~ 1000
 		System.out.println("Enter an integer between 0 and 1000 (999 accepted, 1000 not accepted): ");
 		int number = input.nextInt();
 		
