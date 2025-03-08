@@ -1,3 +1,5 @@
+package Chapter3;
+
 /* Chapter 3.4 
  * Write a program that generates two integers under 100 and prompts the user to enter the sum of these two integers. 
  * Program reports true if answer is correct, else false
