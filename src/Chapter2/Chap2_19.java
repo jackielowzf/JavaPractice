@@ -1,3 +1,5 @@
+package Chapter2;
+
 /* Problem 2.19
  * Geometry: Distance of two points. Prompts user to enter two coordinates and displays 
  * distance between them. Objective of this problem is to use Math.pow and calling it as
@@ -19,6 +21,8 @@ public class Chap2_19 {
 		System.out.println("Enter x2 and y2 (e.g 4 5): ");
 		double x2 = input.nextDouble();
 		double y2 = input.nextDouble();
+		
+		input.close();
 		
 		// Calculate dx and dy and call to function
 		double dx = x2 - x1;
