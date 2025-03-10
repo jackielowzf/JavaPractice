@@ -15,6 +15,8 @@ public class Chap3_26 {
 		System.out.println("Enter an integer: ");
 		int number = input.nextInt();
 		
+		input.close();
+		
 		//Check if number is divisible by 5 and 6
 		System.out.println("Is " + number + " divisible by 5 and 6? ");
 		

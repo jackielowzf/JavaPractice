@@ -22,6 +22,8 @@ public class Chap3_4 {
 				" and " + rand_Int2 + "? ");
 		int answer = input.nextInt();
 		
+		input.close();
+		
 		//Call to true/false function
 		sum(rand_Int1, rand_Int2, answer);
 		
