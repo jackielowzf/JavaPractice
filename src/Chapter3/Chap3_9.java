@@ -1,3 +1,5 @@
+package Chapter3;
+
 /*
  * Chapter 3.9
  * ISBN-10 consists of 10 digits. The last digit is a checksum, calculated by 
@@ -16,6 +18,7 @@ public class Chap3_9 {
 		System.out.print("Enter the first 9 digits of an ISBN as an integer: ");
 		int isbn = input.nextInt();
 		
+		input.close();
 
 		//Call to checksum() funciton to get 10th digit
 		int d10 = checksum(isbn);

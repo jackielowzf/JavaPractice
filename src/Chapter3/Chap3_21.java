@@ -21,6 +21,8 @@ public class Chap3_21 {
 		System.out.println("Enter day of the month (1~31): ");
 		int dayOfMonth = input.nextInt();
 		
+		input.close();
+		
 		switch (month) {
 			case 1:
 				month = 13;

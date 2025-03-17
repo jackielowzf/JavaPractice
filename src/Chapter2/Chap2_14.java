@@ -1,3 +1,4 @@
+package Chapter2;
 // Question 2.14  Computing BMI
 
 // Taking weight in kg divided by the square of height in m.
@@ -18,6 +19,7 @@ public class Chap2_14 {
 		System.out.println("Enter height in inches: ");
 		double userInch = input.nextDouble();
 		
+		input.close();
 		
 		//BMI calculation
 		double userKg = userLb * poundPerKg;

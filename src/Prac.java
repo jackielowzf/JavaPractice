@@ -8,7 +8,7 @@ public class Prac{
 		System.out.println("Enter an integer between 0 and 1000 (999 accepted, 1000 not accepted): ");
 		int number = input.nextInt();
 		
-		
+		input.close();
 		// Break integer apart (first digit)
 		int FirstDigit = number / 100;
 		int remainder = number % 100;

@@ -4,6 +4,7 @@
  * and computes perimeter if input is valid. Otherwise, display input is invalid. 
  * Input is valid if sum of every pair of two edges is greater than the remaining edge.
  */
+package Chapter3;
 
 import java.util.Scanner;
 
@@ -26,6 +27,7 @@ public class Chap3_19 {
 			length3 = input.nextDouble();
 		}
 		
+		input.close();
 		//Display perimeter
 		double perimeter = length1 + length2 + length3;
 		
