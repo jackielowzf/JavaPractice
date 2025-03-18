@@ -36,8 +36,8 @@ public class Chapter4_21 {
 			
 			System.out.printf("%-18s%-18s%-18s%n",
 							  interestRate + "%",
-							  String.format("%.2f", (int)(monthlyPayment * 100) / 100.0),
-							  String.format("%.2f", (int)(totalPayment * 100) / 100.0));
+							  String.format("%.2f", (int)(monthlyPayment * 100) / 100),
+							  String.format("%.2f", (int)(totalPayment * 100) / 100));
 			
 			
 		}
