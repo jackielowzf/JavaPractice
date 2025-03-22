@@ -31,7 +31,7 @@ public class Chap3_23 {
 	
 	public static double distance(double point) {
 		
-		double length = Math.pow(Math.pow(point, 2), 0.5);
+		double length = Math.abs(point);
 		return length;
 	}
 	
