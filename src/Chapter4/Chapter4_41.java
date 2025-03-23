@@ -37,7 +37,7 @@ public class Chapter4_41 {
 		input.close();
 		
 		System.out.println("The largest number is " + max + 
-				". The occurrence count of the largest number is is " + count);
+				".h The occurrence count of the largest number is is " + count);
 			
 	}
 
