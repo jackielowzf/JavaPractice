@@ -19,8 +19,7 @@ public class Chapter5_3 {
 		
 		System.out.println("Enter an integer: ");
 		int number = input.nextInt();
-		
-		
+	
 		
 		if (isPalindrome(number))
 			System.out.println("The number " + number + " is a palindrome.");
