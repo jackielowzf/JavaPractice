@@ -7,10 +7,17 @@ package Chapter5;
  */
 public class Chapter5_26 {
 	public static void main(String[] args) {
+		int numberOfOutput = 100;
+		
+		isPrime(numberOfOutput);
 		
 	}
 	
-	public static void isPrime() {
+	public static void isPrime(int numberOfPrimes) {
+		
+		for (int i = 0; i < numberOfPrimes; i++) {
+			
+		}
 		
 	}
 	
