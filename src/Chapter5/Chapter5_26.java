@@ -7,22 +7,53 @@ package Chapter5;
  */
 public class Chapter5_26 {
 	public static void main(String[] args) {
-		int numberOfOutput = 100;
-		
-		isPrime(numberOfOutput);
-		
-	}
+		int numberOfOutput = 100, printCounter = 0, printPerLine = 0;
 	
-	public static void isPrime(int numberOfPrimes) {
+		int number = 2;
 		
-		for (int i = 0; i < numberOfPrimes; i++) {
+		while (printCounter < numberOfOutput) {
+			//print 10 results per line
+			while (printPerLine < 10) {
+				//Check if number is prime
+				for (int divider = 2; divider <= number / 2; divider++) {
+					if (number % divider == 0) {
+						number++;
+						divider = 2;
+					}
+				}
+		
+				if (isPalindrome(number)) {
+					System.out.print(number + " ");
+					number++;
+					printPerLine++;
+					printCounter++;
+				}
+				else
+					number++;
+		
+			}
 			
+			System.out.print("\n");
+			printPerLine = 0;
+		}
+	}	
+	
+	
+	public static boolean isPalindrome(int number) {
+		
+		int digit = 0, reversed = 0, testNumber = number;
+		
+		while (testNumber > 0) {
+			digit = testNumber % 10;
+			reversed = reversed * 10 + digit;
+			testNumber /= 10;
 		}
 		
-	}
-	
-	public static void isPalindrome() {
-		
+		if (number == reversed) {
+			return true;
+		}
+		else
+			return false;
 	}
 
 }
