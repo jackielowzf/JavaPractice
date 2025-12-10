@@ -1,5 +1,4 @@
 package Chapter6;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -12,35 +11,52 @@ import java.util.Scanner;
 public class Chapter6_22 {
 	public static void main(String args[]) {
 		
-		final int NUMBER_OF_DAYS = 10;
-		final int NUMBER_OF_HOURS = 24;
-		double [][][] data = new double[NUMBER_OF_DAYS][NUMBER_OF_HOURS][2];
+		int day = 0;
+		int answer;
 		
+		int[][][] dates = {
+				 {{ 1, 3, 5, 7},
+				 { 9, 11, 13, 15},
+				 {17, 19, 21, 23},
+				 {25, 27, 29, 31}},
+				 {{ 2, 3, 6, 7},
+				 {10, 11, 14, 15},
+				 {18, 19, 22, 23},
+				 {26, 27, 30, 31}},
+				 {{ 4, 5, 6, 7},
+				 {12, 13, 14, 15},
+				 {20, 21, 22, 23},
+				 {28, 29, 30, 31}},
+				 {{ 8, 9, 10, 11},
+				 {12, 13, 14, 15},
+				 {24, 25, 26, 27},
+				 {28, 29, 30, 31}},
+				 {{16, 17, 18, 19},
+				 {20, 21, 22, 23},
+				 {24, 25, 26, 27},
+				 {28, 29, 30, 31}}};
+		
+		// Create a Scanner
 		Scanner input = new Scanner(System.in);
-		// Read input using input redirection from a file
-		for (int k = 0; k < NUMBER_OF_DAYS * NUMBER_OF_HOURS; k++) {
-			int day = input.nextInt();
-			int hour = input.nextInt();
-			double temperature = input.nextDouble();
-			double humidity = input.nextDouble();
-			data[day - 1][hour - 1][0] = temperature;
-			data[day - 1][hour - 1][1] = humidity;
-		}
 		
-		// Find the average daily temperature and humidity
-		for (int i = 0; i < NUMBER_OF_DAYS; i++) {
-			double dailyTemperatureTotal = 0, dailyHumidityTotal = 0;
-			for (int j = 0; j < NUMBER_OF_HOURS; j++) {
-				dailyTemperatureTotal += data[i][j][0];
-				dailyHumidityTotal += data[i][j][1];
+		for (int i = 0; i < 5; i++) {
+			System.out.println("Is your birthday in Set" + (i + 1) + "?");
+			for (int j = 0; j < 4; j++) {
+				for (int k = 0; k < 4; k++)
+					System.out.printf("%4d", dates[i][j][k]);
+			    System.out.println();
 			}
 			
-			//Display result
-			System.out.println("Day " + i + "'s average temperature is "
-					+ dailyTemperatureTotal / NUMBER_OF_HOURS);
-			System.out.println("Day " + i + "'s average humidity is " 
-					+ dailyHumidityTotal / NUMBER_OF_HOURS);
+			System.out.print("\nEnter 0 for No and 1 for Yes: ");
+			answer = input.nextInt();
+			
+			if (answer == 1)
+				day += dates[i][0][0];
+			
 		}
+		input.close();
+		
+		System.out.println("your birthday is " + day);
 
 }
 	
