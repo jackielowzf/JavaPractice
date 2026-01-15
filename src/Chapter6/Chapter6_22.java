@@ -13,7 +13,7 @@ public class Chapter6_22 {
 		
 		int[][] chessboard = new int[8][8];
 		
-		
+		int i = 0;
 
 }
 	
