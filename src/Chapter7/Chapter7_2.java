@@ -29,6 +29,8 @@ public class Chapter7_2 {
 		for(int i = 0; i < m.length; i++) {
 			sum += m[i][i];			
 		}
+		
 		return sum;
 	}
+
 }
