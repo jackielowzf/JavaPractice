@@ -15,26 +15,52 @@ determines the status of the game (win, draw, or continue). Here is a sample run
  */
 public class Chapter7_9 {
 	public static void main(String args[]) {
+		
+		Scanner input = new Scanner(System.in);
 		int[][] board = new int[3][3];
 		
 		//X is player1 and O is player2
 		int x = 1;
 		int o = 2;
-		int row, column = 0;
+		int player = 0;
 		
 		//Check for matching 3 
 		for (int counter = 0; counter < 9; counter++) {
-			inputPlacement(board, x);
-			checkMatchThree(board, x);
+			if (counter % 2 == 0) {
+				player = x;
+			}
+			else {
+				player = o;
+			}
+			inputPlacement(board, player, input);
+			
+			printBoard(board);
+			
+			if(checkMatchThree(board, player)) {
+				input.close();
+				return;
+			}
+			
 		}
+		input.close();
 		
 	}
 	
-	public static void inputPlacement(int[][] board, int pattern) {
+	public static void printBoard(int[][] board) {
+		
+		for (int i = 0; i < board.length; i++) {
+			for(int j = 0; j < board[i].length; j++) {
+				System.out.print(board[i][j] + " ");
+			}
+			
+			System.out.println();
+		}
+	}
+	
+	public static void inputPlacement(int[][] board, int pattern, Scanner input) {
 		
 		int row = 0;
 		int column = 0;
-		Scanner input = new Scanner(System.in);
 		
 		do {
 		
@@ -48,12 +74,49 @@ public class Chapter7_9 {
 		
 		board[row][column] = pattern;
 		
-		input.close();
 	}
 	
 	public static boolean checkMatchThree(int[][] board, int pattern) {
 		
+		//checks rows
+		for (int i = 0; i < 3; i++) {
+			if (board[i][0] == pattern &&
+				board[i][1] == pattern &&
+				board[i][2] == pattern) {
+				
+				System.out.println("Player " + pattern + "wins!");
+				return true;
+			}
+		}
+		//check columns
+		for (int j = 0; j < 3; j++) {
+			if (board[0][j] == pattern &&
+				board[1][j] == pattern &&
+				board[2][j] == pattern) {
+				
+				System.out.println("Player " + pattern + " wins!");
+				return true;
+			}
+		}
 		
+		//checks diagonals
+		if (board[0][0] == pattern &&
+			board[1][1] == pattern &&
+			board[2][2] == pattern) {
+			
+			System.out.println("Player " + pattern + " wins!");
+			return true;
+		}
+		
+		if (board[0][2] == pattern &&
+			board[1][1] == pattern &&
+			board[2][0] == pattern) {
+			
+			System.out.println("Player " + pattern + " wins!");
+			return true;
+		}
+		
+		return false;
 	}
 
 }
