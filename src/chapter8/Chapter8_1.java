@@ -1,5 +1,6 @@
 package chapter8;
 /*
+ * Chapter 8.1
  * (The Rectangle class) Following the example of the Circle class in Section 8.2,
 design a class named Rectangle to represent a rectangle. The class contains:
 ■ Two double data fields named width and height that specify the width and
