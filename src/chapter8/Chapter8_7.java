@@ -1,4 +1,5 @@
 package chapter8;
+import java.util.Date;
 /*
  * Chapter 8.7
  * (The Account class) Design a class named Account that contains:
@@ -31,7 +32,14 @@ the balance, the monthly interest, and the date when this account was created.
  */
 public class Chapter8_7 {
 	public static void main(String args[]) {
+		Account account1 = new Account(1122, 20000, 4.5);
+		System.out.println(account1.getId() + "\n" + account1.getBalance() + "\n" + account1.getAnnualInterestRate());
+		account1.withdraw(2500);
+		account1.deposit(3000);
 		
+		System.out.println("Your balance is: " + account1.getBalance() + "\n" +
+						   "Your monthly interest rate is: " + account1.getMonthlyInterest() + "\n" +
+						   "Your account was created on: " + account1.getDateCreated());
 	}
 
 }
@@ -40,16 +48,68 @@ class Account{
 	private int id = 0;
 	private double balance = 0;
 	private double annualInterestRate = 0;
-	private java.util.Date dateCreated;
+	private Date dateCreated;
+	
 	
 	Account(){
-		dateCreated = new java.util.Date();
+		dateCreated = new Date();
 	}
 	
 	Account(int newId, double newBalance, double newAnnualInterestRate){
 		id = newId;
 		balance = newBalance;
 		annualInterestRate = newAnnualInterestRate;
+		dateCreated = new Date();
+	}
+	
+	int getId() {
+		return id;
+	}
+	
+	void setId(int newId) {
+		this.id = newId;
+	}
+	
+	double getBalance() {
+		return balance;
+	}
+	
+	void setBalance(double newBalance) {
+		this.balance = newBalance;
+	}
+	
+	double getAnnualInterestRate() {
+		return annualInterestRate;
+	}
+	
+	void setAnnualInterestRate(double newAnnualInterestRate) {
+		this.annualInterestRate = newAnnualInterestRate;
+	}
+	
+	Date getDateCreated() {
+		Date startDate = dateCreated;
+		
+		return startDate;
+	}
+	
+	double getMonthlyInterestRate() {
+		return annualInterestRate / 12;
+	}
+	
+	double getMonthlyInterest() {
+		return balance * (getMonthlyInterestRate() / 100);
+	}
+	
+	void withdraw(double withdrawAmount) {
+		balance -= withdrawAmount;
+		System.out.println("Withdrawal amount: " + withdrawAmount + "\n" +
+							"Your balance is now: " + balance);
+	}
+	
+	void deposit(double depositAmount) {
+		balance += depositAmount;
+		System.out.println("Deposit amount: " + depositAmount + "\n" +
+							"Your balance is now: " + depositAmount);
 	}
 	
 	
