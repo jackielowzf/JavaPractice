@@ -88,9 +88,4 @@ class Location{
 		
 		return result;
 	}
-	
-	
-	
-	
-	
 }
