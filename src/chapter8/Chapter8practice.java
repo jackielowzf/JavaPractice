@@ -1,4 +1,4 @@
-package Chapter7;
+package chapter8;
 
 public class Chapter8practice {
 	public static void main(String[] args) {

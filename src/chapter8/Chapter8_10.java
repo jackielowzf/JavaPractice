@@ -1,4 +1,4 @@
-package Chapter7;
+package chapter8;
 /*
  * Chapter 8.10
  * (Algebra: quadratic equations) Design a class named QuadraticEquation for a

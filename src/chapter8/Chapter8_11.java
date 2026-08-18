@@ -1,4 +1,4 @@
-package Chapter7;
+package chapter8;
 /*
  * Chapter 8.11
  * (Algebra: linear equations) Design a class named LinearEquation for a

@@ -1,4 +1,5 @@
-package Chapter7;
+package chapter8;
+
 /*
  * Chapter 8.12
  * (Geometry: intersection) Suppose two line segments intersect. The two endpoints

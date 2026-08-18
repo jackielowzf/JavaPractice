@@ -1,4 +1,4 @@
-package Chapter7;
+package chapter8;
 /*
  * Chapter 8.9
  * (Geometry: n-sided regular polygon) In an n-sided regular polygon, all sides have

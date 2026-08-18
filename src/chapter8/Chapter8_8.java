@@ -1,4 +1,4 @@
-package Chapter7;
+package chapter8;
 /*
  * Chapter 8.8
  * The Fan class) Design a class named Fan to represent a fan. The class contains:
@@ -26,12 +26,11 @@ toString method.
  */
 public class Chapter8_8 {
 	public static void main(String args[]) {
-		final int SLOW = 1, MEDIUM = 2, FAST = 3;
 		
-		Fan fan1 = new Fan(FAST, true, 10, "yellow");
+		Fan fan1 = new Fan(3, true, 10, "yellow");
 		System.out.println(fan1.toString());
 		
-		Fan fan2 = new Fan(MEDIUM, false, 5, "blue");
+		Fan fan2 = new Fan(2, false, 5, "blue");
 		System.out.println(fan2.toString());
 	}
 
