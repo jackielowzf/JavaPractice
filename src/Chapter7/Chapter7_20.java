@@ -30,7 +30,7 @@ public class Chapter7_20 {
 		int round;
 		
 		for (round = 0; round < 42 && nextRound; round++) {
-			//Player 1's turn, asks player to drop disk and prints board right after
+			//Asks player to drop disk and prints board right after
 			System.out.println("Player " + player + "'s turn. Choose column 0 - 6: ");
 			column = input.nextInt();
 			
