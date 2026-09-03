@@ -42,7 +42,7 @@ public class Chapter7_20 {
 			dropDisk(board, player, column, input);
 			printBoard(board);
 			
-			//Check if player1 wins after dropping a disk
+			//Check if player wins after dropping a disk
 			if (checkBoard(board, player)) {
 				System.out.println("Player " + player + " wins!");
 				nextRound = false;
