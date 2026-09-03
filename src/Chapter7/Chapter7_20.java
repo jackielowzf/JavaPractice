@@ -13,130 +13,142 @@ import java.util.Scanner;
  */
 public class Chapter7_20 {
 	static int[][] board;
-	static int counter;
 	
 	public static void main(String[] args) {
 		board = new int[6][7];
 		final int player1Red = 1;
-		counter = 0;
 		
 		printBoard(board);
-		playerTurn(board, player1Red, counter);
+		playerTurn(board, player1Red);
 		
 	}
 	
-	public static void playerTurn(int[][] board, int player, int counter) {
+	public static void playerTurn(int[][] board, int player) {
 		Scanner input = new Scanner(System.in);
 		int column = 0;
+		boolean nextRound = true;
+		int round;
 		
-		if (player == 1) {
-			//Player 1's turn, asks player to drop disk and prints board right after
-			System.out.println("Player 1's turn: ");
-			column = input.nextInt();
-			dropDisk(board, 1, column);
-			printBoard(board);
+		for (round = 0; round < 42 && nextRound; round++) {
 			
-			//Check if player1 wins after dropping a disk
-			if (checkBoard(board, 1) && counter < 42) {
-				System.out.println("Player 1 wins!");
+			if (player == 1) {
+				//Player 1's turn, asks player to drop disk and prints board right after
+				System.out.println("Player 1's turn. Choose column 0 - 6: ");
+				column = input.nextInt();
+				
+				while (column < 0 || column >= 7) {
+					System.out.println("Invalid column. Choose 0 - 6: ");
+					column = input.nextInt();
+				}
+				
+				dropDisk(board, 1, column, input);
+				printBoard(board);
+				
+				//Check if player1 wins after dropping a disk
+				if (checkBoard(board, 1)) {
+					System.out.println("Player 1 wins!");
+					nextRound = false;
+				}
+				//Switch turns with other player
+				else {
+					player = 2;
+				}
 			}
-			//Switch turns with other player
 			else {
-				player = 2;
-				playerTurn(board, player, counter + 1);
-			}
+				//Player 2's turn, asks player to drop disk and prints board right after
+				System.out.println("Player 2's turn. Choose column 0 - 6: ");
+				column = input.nextInt();
+				
+				while (column < 0 || column >= 7) {
+					System.out.println("Invalid column. Choose 0 - 6: ");
+					column = input.nextInt();
+				}
+				
+				dropDisk(board, 2, column, input);
+				printBoard(board);
+				
+				//Check if Player 2 wins after dropping disk
+				if (checkBoard(board, 2)) {
+					System.out.println("Player 2 wins!");
+					nextRound = false;
+				}
+				else {
+					player = 1;
+				}
+			}	
 		}
-		else {
-			//Player 2's turn, asks player to drop disk and prints board right after
-			System.out.println("Player 2's turn: ");
-			column = input.nextInt();
-			dropDisk(board, 2, column);
-			printBoard(board);
-			
-			//Check if Player 2 wins after dropping disk
-			if (checkBoard(board, 2)) {
-				System.out.println("Player 2 wins!");
-			}
-			else {
-				player = 1;
-				playerTurn(board, player, counter + 1);
-			}
-		}	
+		
+		if (round == 42 && nextRound) {
+			System.out.println("Draw!");
+		}
 		
 		input.close();
 	}
 	
-	public static void dropDisk(int[][] board, int disk, int column) {
-		boolean placeDisk = true;
+	public static void dropDisk(int[][] board, int disk, int column, Scanner input) {
 		
-		for (int i = 5; i >= 0 && placeDisk; i--) {
-			if (board[i][column] == 0) {
-				board[i][column] = disk;
-				placeDisk = false;
+		while (true) {
+			
+			for (int i = 5; i >= 0; i--) {
+				if (board[i][column] == 0) {
+					board[i][column] = disk;
+					return;
+				}
+			}
+			
+			System.out.println("Column is full. Choose another column: ");
+			column = input.nextInt();
+				
+			while (column < 0 || column >= 7) {
+				System.out.println("Invalid column. Choose 0 - 6: ");
+				column = input.nextInt();
 			}
 		}
 	}
 	
 	public static boolean checkBoard(int[][] board, int disk) {
-		int counter = 0;
+		int rows = board.length;
+		int columns = board[0].length;
+			
 		
-		//Check horizontal
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
 				
-				if (board[i][j] == disk) {
-					counter++;
-					if (counter == 4) {//4 matching disks found
-						return true;
-					}
+				//Check horizontal
+				if (j + 3 < columns &&
+					board[i][j] == disk &&
+					board[i][j + 1] == disk &&
+					board[i][j + 2] == disk &&
+					board[i][j + 3] == disk) {
+					return true;
 				}
-				else 
-					counter = 0;
-			}
-		}
-		
-		//Check vertical
-		for (int i = 0; i < board[i].length; i++) {
-			for (int j = 0; j < board.length; j++) {
 				
-				if (board[i][j] == disk) {
-					counter++;
-					if (counter == 4) {
-						return true;
-					}
+				//Check vertical
+				if (i + 3 < rows &&
+					board[i][j] == disk &&
+					board[i + 1][j] == disk &&
+					board[i + 2][j] == disk &&
+					board[i + 3][j] == disk) {
+					return true;
 				}
-				else
-					counter = 0;
-			}
-		}
-		
-		//Check left diagonal
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0, k = i; j < board[i].length; j++, k++) {
 				
-				if (board[k][j] == disk) {
-					counter++;
-					if (counter == 4) {
-						return true;
-					}
+				//Check left Diagonal
+				if (i + 3 < rows && j + 3 < columns &&
+					board[i][j] == disk &&
+					board[i + 1][j + 1] == disk &&
+					board[i + 2][j + 2] == disk &&
+					board[i + 3][j + 3] == disk) {
+					return true;
 				}
-				else 
-					counter = 0;
-			}
-		}
-		
-		//Check right diagonal
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0, k = i; j < board[i].length; j--, k++) {
 				
-				if (board[k][j] == disk) {
-					counter++;
-					if (counter == 4) {
-						return true;
-					}
+				//Check right Diagonal
+				if (i + 3 < rows && j - 3 >= 0 &&
+					board[i][j] == disk &&
+					board[i + 1][j - 1] == disk &&
+					board[i + 2][j - 2] == disk &&
+					board[i + 3][j - 3] == disk) {
+					return true;
 				}
-				else
-					counter = 0;
 			}
 		}
 		
