@@ -30,52 +30,32 @@ public class Chapter7_20 {
 		int round;
 		
 		for (round = 0; round < 42 && nextRound; round++) {
+			//Player 1's turn, asks player to drop disk and prints board right after
+			System.out.println("Player " + player + "'s turn. Choose column 0 - 6: ");
+			column = input.nextInt();
 			
-			if (player == 1) {
-				//Player 1's turn, asks player to drop disk and prints board right after
-				System.out.println("Player 1's turn. Choose column 0 - 6: ");
+			while (column < 0 || column >= 7) {
+				System.out.println("Invalid column. Choose 0 - 6: ");
 				column = input.nextInt();
-				
-				while (column < 0 || column >= 7) {
-					System.out.println("Invalid column. Choose 0 - 6: ");
-					column = input.nextInt();
-				}
-				
-				dropDisk(board, 1, column, input);
-				printBoard(board);
-				
-				//Check if player1 wins after dropping a disk
-				if (checkBoard(board, 1)) {
-					System.out.println("Player 1 wins!");
-					nextRound = false;
-				}
-				//Switch turns with other player
-				else {
-					player = 2;
-				}
+			}
+			
+			dropDisk(board, player, column, input);
+			printBoard(board);
+			
+			//Check if player1 wins after dropping a disk
+			if (checkBoard(board, player)) {
+				System.out.println("Player " + player + " wins!");
+				nextRound = false;
 			}
 			else {
-				//Player 2's turn, asks player to drop disk and prints board right after
-				System.out.println("Player 2's turn. Choose column 0 - 6: ");
-				column = input.nextInt();
-				
-				while (column < 0 || column >= 7) {
-					System.out.println("Invalid column. Choose 0 - 6: ");
-					column = input.nextInt();
-				}
-				
-				dropDisk(board, 2, column, input);
-				printBoard(board);
-				
-				//Check if Player 2 wins after dropping disk
-				if (checkBoard(board, 2)) {
-					System.out.println("Player 2 wins!");
-					nextRound = false;
+				//Switches player at the end of round
+				if (player == 1) {
+					player = 2;
 				}
 				else {
 					player = 1;
-				}
-			}	
+				}				
+			}
 		}
 		
 		if (round == 42 && nextRound) {
