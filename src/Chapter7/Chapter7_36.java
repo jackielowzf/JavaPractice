@@ -23,31 +23,87 @@ A F D
  */
 public class Chapter7_36 {
 	public static void main(String args[]) {
-		String[][] test1 = {{"A", "B", "C", "D"},
-							{"B", "A", "D", "C"},
-							{"C", "D", "B", "A"},
-							{"D", "C", "A", "B"}};
+		int n1 = 4; 
+		int n2 = 3;
+		char[][] test1 = {{'A', 'B', 'C', 'D'},
+							{'B', 'A', 'D', 'C'},
+							{'C', 'D', 'B', 'A'},
+							{'D', 'C', 'A', 'B'}};
 		
-		String[][] test2 = {{"A", "F", "D"}};
+		char[][] test2 = {{'A', 'F', 'D'}};
 		
-		printResults(test1);
-		printResults(test2);
+		printResults(test1, n1);
+		printResults(test2, n2);
+		
 	}
 	
-	public static void printResults(String[][] m) {
+	public static void printResults(char[][] m, int n) {
+		char limit = (char)('A' + n - 1);
 		
-		if (isValidLatinSquare(m)) {
+		if (isValidLatinSquare(m, n)) {
 			System.out.println("The input array is a Latin square");
 		}
 		else
-			System.out.println("Wrong input: the letters must be from A to C");
+			System.out.println("Wrong input: the letters must be from A to " + limit);
 		
 	}
 	
-	public static boolean isValidLatinSquare(String[][] m) {
+	public static boolean isValidLatinSquare(char[][] m, int n) {
+		char[] compare = new char[n];
+		int row = m.length;
+		int column = m[0].length;
 		
+		//Check each row
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
+				
+				//Check if element is unique or an invalid input
+				if(!isUnique(compare, m[i][j]) ||
+					m[i][j] >= ('A' + n)) {
+					return false;
+				}
+			}
+			resetArray(compare);
+		}
+		
+		//Check each column
+		for (int j = 0; j < column; j++) {
+			for (int i = 0; i < row; i++) {
+				
+				//Check if element is unique or an invalid input
+				if(!isUnique(compare, m[i][j]) ||
+					m[i][j] >= ('A' + n)) {
+					return false;
+				}
+			}
+			resetArray(compare);
+		}
+		
+		return true;
+	}
+	
+	public static boolean isUnique(char[] m, char letter) {
+		
+		for (int i = 0; i < m.length; i++) {
+			
+			if (m[i] == 0) {
+				m[i] = letter;
+				return true;
+			}
+			
+			if (m[i] == letter) {
+				return false;
+			}
+		}
 		
 		return false;
+	}
+	
+	public static void resetArray(char[] m) {
+		
+		for (int i = 0; i < m.length; i++) {
+			m[i] = 0;
+		}
 	}
 
 }
