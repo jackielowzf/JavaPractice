@@ -37,18 +37,46 @@ public class Chapter7_35 {
 	}
 	
 	public static int[] findLargestBlock(int[][] m) {
-		int[] array = new int[3];
+		int[] result = new int[3];
+		int size = 0;
+		int maxSize = 0;
 		
 		for (int i = 0; i < m.length; i++) {
 			for (int j = 0; j < m[i].length; j++) {
 				
-				if (m[i][j] == 1) {
-					
+				size = 0;
+				while (isValidSquare(m, i, j, size + 1)) {
+					size++;
+				}
+				
+				if (size > maxSize) {
+					maxSize = size;
+					result[0] = i;
+					result[1] = j;
+					result[2] = size;
 				}
 			}
 		}
 		
-		return array;
+		return result;
+	}
+	
+	public static boolean isValidSquare(int[][] m, int row, int col, int size) {
+		//Check if the square fits within the matrix
+		if (row + size > m.length || col + size > m[row].length) {
+			return false;
+		}
+		
+		//Check every element inside the square is 1
+		for (int i = row; i < row + size; i++) {
+			for (int j = col; j < col + size; j++) {
+				if (m[i][j] == 0) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 
 }
