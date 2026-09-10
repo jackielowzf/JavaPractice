@@ -1,6 +1,6 @@
 package Chapter7;
 /*
- * Chapter7_35
+ * Chapter 7.35
  * (Largest block) Given a square matrix with the elements 0 or 1, write a program to
 find a maximum square submatrix whose elements are all 1s. Your program
 should prompt the user to enter the number of rows in the matrix. The program
@@ -24,7 +24,31 @@ value is the number of the rows in the submatrix.
  */
 public class Chapter7_35 {
 	public static void main(String args[]) {
+		int[][] m = {{1, 0, 1, 0, 1},
+					 {1, 1, 1, 0, 1},
+					 {1, 0, 1, 1, 1},
+					 {1, 0, 1, 1, 1},
+					 {1, 0, 1, 1, 1}};
 		
+		int[] results = findLargestBlock(m);
+		System.out.println("The maximum square submatrix is at (" +
+						   results[0] + ", " + results[1] + ") with size " + results[2]);
+		
+	}
+	
+	public static int[] findLargestBlock(int[][] m) {
+		int[] array = new int[3];
+		
+		for (int i = 0; i < m.length; i++) {
+			for (int j = 0; j < m[i].length; j++) {
+				
+				if (m[i][j] == 1) {
+					
+				}
+			}
+		}
+		
+		return array;
 	}
 
 }
